@@ -14,10 +14,9 @@
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm RAZOR_WIND,   WHIRLWIND,    TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  \
-	     HYPER_BEAM,   RAGE,         MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         SWIFT,        SKY_ATTACK,   REST,         SUBSTITUTE,   \
-	     FLY
+	tmhm DUST_DEVIL,   TOXIC,        BODY_SLAM,    HYPER_BEAM,   MIRROR_MOVE,  \
+	     MIMIC,        BIDE,         SING,         SKY_ATTACK,   REST,         \
+	     SUBSTITUTE,   FLY
 	; end
 
 	db 0 ; padding

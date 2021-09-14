@@ -14,9 +14,10 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    HYPER_BEAM,   RAGE,         MEGA_DRAIN,   \
-	     THUNDERBOLT,  THUNDER,      MIMIC,        DOUBLE_TEAM,  BIDE,         \
-	     SELFDESTRUCT, FIRE_BLAST,   REST,         EXPLOSION,    SUBSTITUTE
+	tmhm TOXIC,        BODY_SLAM,    HAZE,         HYPER_BEAM,   GIGA_DRAIN,   \
+	     MEGA_DRAIN,   THUNDERBOLT,  THUNDER,      ROCK_SLIDE,   SHADOW_BALL,  \
+	     MIMIC,        ICE_PUNCH,    BIDE,         FLAMETHROWER, SELFDESTRUCT, \
+	     FIRE_BLAST,   THUNDERPUNCH, REST,         FIRE_PUNCH,   SUBSTITUTE
 	; end
 
 	db 0 ; padding

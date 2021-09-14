@@ -132,10 +132,10 @@ ReadTrainer:
 ; starter
 	ld a, [wRivalStarter]
 	cp STARTER3
-	ld b, MEGA_DRAIN
+	ld b, HYPER_BEAM
 	jr z, .GiveStarterMove
 	cp STARTER1
-	ld b, FIRE_BLAST
+	ld b, OUTRAGE
 	jr z, .GiveStarterMove
 	ld b, BLIZZARD ; must be squirtle
 .GiveStarterMove

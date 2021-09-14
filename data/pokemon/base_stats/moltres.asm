@@ -14,10 +14,10 @@
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm RAZOR_WIND,   WHIRLWIND,    TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  \
-	     HYPER_BEAM,   RAGE,         MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         FIRE_BLAST,   SWIFT,        SKY_ATTACK,   REST,         \
-	     SUBSTITUTE,   FLY
+	tmhm DUST_DEVIL,   TOXIC,        WILL_O_WISP,  HYPER_BEAM,   MIRROR_MOVE,  \
+	     SMOKESCREEN,  SOLARBEAM,    MIMIC,        BIDE,         FLAMETHROWER, \
+	     FIRE_BLAST,   SCARY_FACE,   SKY_ATTACK,   REST,         SUBSTITUTE,   \
+	     FLY,          FLASH
 	; end
 
 	db 0 ; padding

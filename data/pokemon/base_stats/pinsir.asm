@@ -14,10 +14,10 @@
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm SWORDS_DANCE, TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     HYPER_BEAM,   SUBMISSION,   SEISMIC_TOSS, RAGE,         MIMIC,        \
-	     DOUBLE_TEAM,  BIDE,         REST,         SUBSTITUTE,   CUT,          \
-	     STRENGTH
+	tmhm DUST_DEVIL,   TOXIC,        PIN_MISSILE,  BODY_SLAM,    SEISMIC_TOSS, \
+	     HYPER_BEAM,   EARTHQUAKE,   ROCK_SLIDE,   DIG,          MIMIC,        \
+	     BIDE,         SWORDS_DANCE, SCARY_FACE,   REST,         ROCK_TACKLE,  \
+	     SUBSTITUTE,   CUT,          STRENGTH
 	; end
 
 	db 0 ; padding

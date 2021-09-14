@@ -14,12 +14,12 @@
 	db GROWTH_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
-	     SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         SOLARBEAM,    \
-	     THUNDERBOLT,  THUNDER,      PSYCHIC_M,    TELEPORT,     MIMIC,        \
-	     DOUBLE_TEAM,  REFLECT,      BIDE,         METRONOME,    FIRE_BLAST,   \
-	     SKULL_BASH,   REST,         THUNDER_WAVE, PSYWAVE,      TRI_ATTACK,   \
+	tmhm MEGA_PUNCH,   PAY_DAY,      BUBBLEBEAM,   MEGA_KICK,    TOXIC,        \
+	     BODY_SLAM,    SEISMIC_TOSS, WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
+	     ICY_WIND,     AMNESIA,      SOLARBEAM,    THUNDERBOLT,  THUNDER,      \
+	     PSYCHIC_M,    SHADOW_BALL,  MIMIC,        ICE_PUNCH,    BIDE,         \
+	     FLAMETHROWER, SELFDESTRUCT, FIRE_BLAST,   SING,         THUNDERPUNCH, \
+	     REST,         THUNDER_WAVE, EXTRASENSORY, FIRE_PUNCH,   TRI_ATTACK,   \
 	     SUBSTITUTE,   STRENGTH,     FLASH
 	; end
 

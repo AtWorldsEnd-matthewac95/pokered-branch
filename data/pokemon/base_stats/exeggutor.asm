@@ -14,10 +14,11 @@
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   RAGE,         \
-	     MEGA_DRAIN,   SOLARBEAM,    PSYCHIC_M,    TELEPORT,     MIMIC,        \
-	     DOUBLE_TEAM,  REFLECT,      BIDE,         SELFDESTRUCT, EGG_BOMB,     \
-	     REST,         PSYWAVE,      EXPLOSION,    SUBSTITUTE,   STRENGTH
+	tmhm MEGA_KICK,    TOXIC,        PIN_MISSILE,  BODY_SLAM,    HYPER_BEAM,   \
+	     AMNESIA,      GIGA_DRAIN,   MEGA_DRAIN,   SOLARBEAM,    EARTHQUAKE,   \
+	     ROCK_SLIDE,   PSYCHIC_M,    MIMIC,        BIDE,         SELFDESTRUCT, \
+	     SWORDS_DANCE, REST,         THUNDER_WAVE, EXTRASENSORY, ROCK_TACKLE,  \
+	     TRI_ATTACK,   SUBSTITUTE,   CUT,          STRENGTH,     FLASH
 	; end
 
 	db 0 ; padding

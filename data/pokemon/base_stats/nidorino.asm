@@ -14,10 +14,10 @@
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         \
-	     THUNDERBOLT,  THUNDER,      MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         SKULL_BASH,   REST,         SUBSTITUTE
+	tmhm BUBBLEBEAM,   MEGA_KICK,    TOXIC,        PIN_MISSILE,  BODY_SLAM,    \
+	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     ICY_WIND,     AMNESIA,      \
+	     THUNDERBOLT,  THUNDER,      DIG,          MIMIC,        BIDE,         \
+	     SCARY_FACE,   REST,         ROCK_TACKLE,  SUBSTITUTE
 	; end
 
 	db 0 ; padding

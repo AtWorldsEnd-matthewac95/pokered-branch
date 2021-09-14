@@ -14,11 +14,11 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         \
-	     PSYCHIC_M,    TELEPORT,     MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         METRONOME,    SKULL_BASH,   DREAM_EATER,  REST,         \
-	     THUNDER_WAVE, PSYWAVE,      TRI_ATTACK,   SUBSTITUTE,   FLASH
+	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    HAZE,         \
+	     SEISMIC_TOSS, AMNESIA,      SMOKESCREEN,  MEGA_DRAIN,   PSYCHIC_M,    \
+	     SHADOW_BALL,  MIMIC,        ICE_PUNCH,    BIDE,         THUNDERPUNCH, \
+	     REST,         THUNDER_WAVE, EXTRASENSORY, FIRE_PUNCH,   SUBSTITUTE,   \
+	     STRENGTH,     FLASH
 	; end
 
 	db 0 ; padding

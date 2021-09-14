@@ -14,10 +14,9 @@
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
-	     DRAGON_RAGE,  DIG,          MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         \
-	     SUBSTITUTE
+	tmhm TOXIC,        BODY_SLAM,    WILL_O_WISP,  SMOKESCREEN,  DRAGON_RAGE,  \
+	     DIG,          MIMIC,        BIDE,         FLAMETHROWER, FIRE_BLAST,   \
+	     SCARY_FACE,   REST,         SUBSTITUTE
 	; end
 
 	db 0 ; padding

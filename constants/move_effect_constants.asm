@@ -12,7 +12,7 @@
 	const FREEZE_SIDE_EFFECT         ; $05
 	const PARALYZE_SIDE_EFFECT1      ; $06
 	const EXPLODE_EFFECT             ; $07 Explosion, Self Destruct
-	const DREAM_EATER_EFFECT         ; $08
+	const DREAM_EATER_EFFECT         ; $08 no longer used
 	const MIRROR_MOVE_EFFECT         ; $09
 	const ATTACK_UP1_EFFECT          ; $0A
 	const DEFENSE_UP1_EFFECT         ; $0B
@@ -28,7 +28,7 @@
 	const SPECIAL_DOWN1_EFFECT       ; $15
 	const ACCURACY_DOWN1_EFFECT      ; $16
 	const EVASION_DOWN1_EFFECT       ; $17
-	const CONVERSION_EFFECT          ; $18
+	const CONVERSION_EFFECT          ; $18 no longer used
 	const HAZE_EFFECT                ; $19
 	const BIDE_EFFECT                ; $1A
 	const THRASH_PETAL_DANCE_EFFECT  ; $1B
@@ -42,7 +42,7 @@
 	const_skip                       ; $23
 	const PARALYZE_SIDE_EFFECT2      ; $24
 	const FLINCH_SIDE_EFFECT2        ; $25
-	const OHKO_EFFECT                ; $26 moves like Horn Drill
+	const OHKO_EFFECT                ; $26 moves like Horn Drill, no longer used
 	const CHARGE_EFFECT              ; $27 moves like Solar Beam
 	const SUPER_FANG_EFFECT          ; $28
 	const SPECIAL_DAMAGE_EFFECT      ; $29 Seismic Toss, Night Shade, Sonic Boom, Dragon Rage, Psywave
@@ -51,7 +51,7 @@
 	const ATTACK_TWICE_EFFECT        ; $2C
 	const JUMP_KICK_EFFECT           ; $2D Jump Kick and Hi Jump Kick effect
 	const MIST_EFFECT                ; $2E
-	const FOCUS_ENERGY_EFFECT        ; $2F
+	const FOCUS_ENERGY_EFFECT        ; $2F no longer used
 	const RECOIL_EFFECT              ; $30 moves like Double Edge
 	const CONFUSION_EFFECT           ; $31 Confuse Ray, Supersonic (not the move Confusion)
 	const ATTACK_UP2_EFFECT          ; $32
@@ -68,8 +68,8 @@
 	const SPECIAL_DOWN2_EFFECT       ; $3D
 	const ACCURACY_DOWN2_EFFECT      ; $3E
 	const EVASION_DOWN2_EFFECT       ; $3F
-	const LIGHT_SCREEN_EFFECT        ; $40
-	const REFLECT_EFFECT             ; $41
+	const LIGHT_SCREEN_EFFECT        ; $40 no longer used
+	const REFLECT_EFFECT             ; $41 no longer used
 	const POISON_EFFECT              ; $42
 	const PARALYZE_EFFECT            ; $43
 	const ATTACK_DOWN_SIDE_EFFECT    ; $44
@@ -81,11 +81,11 @@
 	const_skip                       ; $4A
 	const_skip                       ; $4B
 	const CONFUSION_SIDE_EFFECT      ; $4C
-	const TWINEEDLE_EFFECT           ; $4D
+	const TWINEEDLE_EFFECT           ; $4D no longer used
 	const_skip                       ; $4E
 	const SUBSTITUTE_EFFECT          ; $4F
 	const HYPER_BEAM_EFFECT          ; $50
-	const RAGE_EFFECT                ; $51
+	const RAGE_EFFECT                ; $51 no longer used
 	const MIMIC_EFFECT               ; $52
 	const METRONOME_EFFECT           ; $53
 	const LEECH_SEED_EFFECT          ; $54

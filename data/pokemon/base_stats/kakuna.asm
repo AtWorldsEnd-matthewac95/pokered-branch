@@ -14,7 +14,8 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm
+	tmhm TOXIC,        PIN_MISSILE,  GIGA_DRAIN,   MEGA_DRAIN,   MIMIC,        \
+	     BIDE,         SWORDS_DANCE, REST,         SUBSTITUTE,   CUT
 	; end
 
 	db 0 ; padding
