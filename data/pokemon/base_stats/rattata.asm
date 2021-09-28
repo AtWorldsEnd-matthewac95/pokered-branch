@@ -16,8 +16,8 @@
 	; tm/hm learnset
 	tmhm BUBBLEBEAM,   TOXIC,        BODY_SLAM,    WATER_GUN,    ICE_BEAM,     \
 	     BLIZZARD,     ICY_WIND,     THUNDERBOLT,  THUNDER,      DIG,          \
-	     SHADOW_BALL,  MIMIC,        BIDE,         SCARY_FACE,   REST,         \
-	     SUBSTITUTE
+	     SHADOW_BALL,  MIMIC,        BIDE,         SCARY_FACE,   SLUDGE,       \
+	     REST,         SUBSTITUTE
 	; end
 
 	db 0 ; padding

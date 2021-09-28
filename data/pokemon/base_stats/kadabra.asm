@@ -16,9 +16,9 @@
 	; tm/hm learnset
 	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    SEISMIC_TOSS, \
 	     AMNESIA,      DIG,          PSYCHIC_M,    SHADOW_BALL,  MIMIC,        \
-	     JUMP_KICK,    ICE_PUNCH,    BIDE,         SWORDS_DANCE  THUNDERPUNCH, \
-	     REST,         THUNDER_WAVE, EXTRASENSORY, FIRE_PUNCH,   TRI_ATTACK,   \
-	     SUBSTITUTE,   FLASH
+	     JUMP_KICK,    ICE_PUNCH,    BIDE,         SWORDS_DANCE, SCARY_FACE,   \
+	     THUNDERPUNCH, REST,         THUNDER_WAVE, EXTRASENSORY, FIRE_PUNCH,   \
+	     TRI_ATTACK,   SUBSTITUTE,   FLASH
 	; end
 
 	db 0 ; padding

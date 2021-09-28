@@ -17,7 +17,7 @@
 	tmhm PAY_DAY,      BUBBLEBEAM,   MEGA_KICK,    TOXIC,        BODY_SLAM,    \
 	     HAZE,         WATER_GUN,    ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
 	     ICY_WIND,     DIG,          SHADOW_BALL,  MIMIC,        BIDE,         \
-	     SING,         REST,         SUBSTITUTE,   SURF
+	     SING,         SLUDGE,       REST,         SUBSTITUTE,   SURF
 	; end
 
 	db 0 ; padding

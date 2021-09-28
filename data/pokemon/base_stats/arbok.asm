@@ -10,13 +10,14 @@
 	INCBIN "gfx/pokemon/front/arbok.pic", 0, 1 ; sprite dimensions
 	dw ArbokPicFront, ArbokPicBack
 
-	db WRAP, LEER, POISON_STING, NO_MOVE ; level 1 learnset
+	db POISON_STING, ACID, WRAP, SCARY_FACE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
 	tmhm TOXIC,        BODY_SLAM,    HAZE,         HYPER_BEAM,   GIGA_DRAIN,   \
 	     MEGA_DRAIN,   DRAGON_RAGE,  EARTHQUAKE,   ROCK_SLIDE,   DIG,          \
-	     MIMIC,        BIDE,         SCARY_FACE,   REST,         SUBSTITUTE
+	     MIMIC,        BIDE,         SCARY_FACE,   REST,         SUBSTITUTE,   \
+	     SURF
 	; end
 
 	db 0 ; padding

@@ -198,7 +198,7 @@ TM01 EQU const_value
 	add_tm SING         ; $EF
 	add_tm SCARY_FACE   ; $F0
 	add_tm THUNDERPUNCH ; $F1
-	add_tm SOFTBOILED   ; $F2
+	add_tm SLUDGE       ; $F2
 	add_tm SKY_ATTACK   ; $F3
 	add_tm REST         ; $F4
 	add_tm THUNDER_WAVE ; $F5

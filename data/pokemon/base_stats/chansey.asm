@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/chansey.pic", 0, 1 ; sprite dimensions
 	dw ChanseyPicFront, ChanseyPicBack
 
-	db POUND, DOUBLESLAP, NO_MOVE, NO_MOVE ; level 1 learnset
+	db GROWL, DOUBLESLAP, DEFENSE_CURL, NO_MOVE ; level 1 learnset
 	db GROWTH_FAST ; growth rate
 
 	; tm/hm learnset
@@ -19,8 +19,8 @@
 	     HYPER_BEAM,   ICY_WIND,     SOLARBEAM,    THUNDERBOLT,  THUNDER,      \
 	     PSYCHIC_M,    SHADOW_BALL,  MIMIC,        ICE_PUNCH,    BIDE,         \
 	     FLAMETHROWER, SELFDESTRUCT, FIRE_BLAST,   SING,         THUNDERPUNCH, \
-	     SOFTBOILED,   REST,         THUNDER_WAVE, FIRE_PUNCH,   TRI_ATTACK,   \
-	     SUBSTITUTE,   FLASH
+	     REST,         THUNDER_WAVE, FIRE_PUNCH,   TRI_ATTACK,   SUBSTITUTE,   \
+	     FLASH
 	; end
 
 	db 0 ; padding

@@ -10,14 +10,14 @@
 	INCBIN "gfx/pokemon/front/poliwag.pic", 0, 1 ; sprite dimensions
 	dw PoliwagPicFront, PoliwagPicBack
 
-	db BUBBLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
+	db HAZE, GROWL, BUBBLE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
 	tmhm BUBBLEBEAM,   TOXIC,        BODY_SLAM,    HAZE,         WATER_GUN,    \
 	     ICE_BEAM,     BLIZZARD,     ICY_WIND,     AMNESIA,      PSYCHIC_M,    \
-	     MIMIC,        BIDE,         SING,         REST,         EXTRASENSORY, \
-	     SUBSTITUTE,   SURF
+	     MIMIC,        BIDE,         SING,         SLUDGE,       REST,         \
+	     EXTRASENSORY, SUBSTITUTE,   SURF
 	; end
 
 	db 0 ; padding

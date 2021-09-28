@@ -10,14 +10,14 @@
 	INCBIN "gfx/pokemon/front/ivysaur.pic", 0, 1 ; sprite dimensions
 	dw IvysaurPicFront, IvysaurPicBack
 
-	db TACKLE, GROWL, LEECH_SEED, NO_MOVE ; level 1 learnset
+	db TACKLE, GROWTH, POISONPOWDER, VINE_WHIP ; level 1 learnset
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
 	tmhm TOXIC,        BODY_SLAM,    HAZE,         AMNESIA,      GIGA_DRAIN,   \
 	     MEGA_DRAIN,   SOLARBEAM,    MIMIC,        BIDE,         SWORDS_DANCE, \
-	     SING,         SCARY_FACE,   REST,         SUBSTITUTE,   CUT,          \
-	     FLASH
+	     SING,         SCARY_FACE,   SLUDGE,       REST,         SUBSTITUTE,   \
+	     CUT,          FLASH
 	; end
 
 	db 0 ; padding

@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/exeggutor.pic", 0, 1 ; sprite dimensions
 	dw ExeggutorPicFront, ExeggutorPicBack
 
-	db BARRAGE, HYPNOSIS, NO_MOVE, NO_MOVE ; level 1 learnset
+	db SOLARBEAM, STOMP, LEECH_SEED, PSYBEAM ; level 1 learnset
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
@@ -18,7 +18,7 @@
 	     AMNESIA,      GIGA_DRAIN,   MEGA_DRAIN,   SOLARBEAM,    EARTHQUAKE,   \
 	     ROCK_SLIDE,   PSYCHIC_M,    MIMIC,        BIDE,         SELFDESTRUCT, \
 	     SWORDS_DANCE, REST,         THUNDER_WAVE, EXTRASENSORY, ROCK_TACKLE,  \
-	     TRI_ATTACK,   SUBSTITUTE,   CUT,          STRENGTH,     FLASH
+	     TRI_ATTACK,   SUBSTITUTE,   CUT,          FLASH
 	; end
 
 	db 0 ; padding

@@ -27,7 +27,7 @@ Route10_TextPointers:
 Route10TrainerHeaders:
 	def_trainers
 Route10TrainerHeader0:
-	trainer EVENT_BEAT_ROUTE_10_TRAINER_0, 4, Route10BattleText1, Route10EndBattleText1, Route10AfterBattleText1
+	trainer EVENT_BEAT_ROUTE_10_TRAINER_0, 3, Route10BattleText1, Route10EndBattleText1, Route10AfterBattleText1
 Route10TrainerHeader1:
 	trainer EVENT_BEAT_ROUTE_10_TRAINER_1, 3, Route10BattleText2, Route10EndBattleText2, Route10AfterBattleText2
 Route10TrainerHeader2:

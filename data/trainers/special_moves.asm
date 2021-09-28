@@ -6,20 +6,20 @@ LoneMoves:
 	; pokemon index, move to give nth pokemon
 	db 1, BIDE
 	db 1, BUBBLEBEAM
-	db 2, THUNDERBOLT
-	db 2, MEGA_DRAIN
+	db 2, BODY_SLAM
+	db 2, SLUDGE_BOMB
 	db 3, TOXIC
-	db 3, PSYCHIC_M
+	db 3, AMNESIA
 	db 3, FIRE_BLAST
-	db 4, EARTHQUAKE
+	db 4, BOULDERCRASH
 
 ; unique moves for elite 4
 ; all trainers in this class are given this move automatically
 ; (unrelated to LoneMoves)
 TeamMoves:
 	; trainer, move
-	db LORELEI, BLIZZARD
+	db LORELEI, THUNDERBOLT
 	db BRUNO,   ROCK_SLIDE
-	db AGATHA,  GIGA_DRAIN
-	db LANCE,   HURRICANE
+	db AGATHA,  ICY_WIND
+	db LANCE,   FLAMETHROWER
 	db -1 ; end

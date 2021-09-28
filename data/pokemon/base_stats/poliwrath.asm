@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/poliwrath.pic", 0, 1 ; sprite dimensions
 	dw PoliwrathPicFront, PoliwrathPicBack
 
-	db HYPNOSIS, WATER_GUN, DOUBLESLAP, BODY_SLAM ; level 1 learnset
+	db DOUBLESLAP, HYPNOSIS, BUBBLEBEAM, KARATE_CHOP ; level 1 learnset
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
@@ -18,8 +18,8 @@
 	     HAZE,         SEISMIC_TOSS, WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
 	     HYPER_BEAM,   ICY_WIND,     AMNESIA,      EARTHQUAKE,   ROCK_SLIDE,   \
 	     PSYCHIC_M,    MIMIC,        JUMP_KICK,    ICE_PUNCH,    BIDE,         \
-	     SING,         REST,         EXTRASENSORY, SUBSTITUTE,   SURF,         \
-	     STRENGTH
+	     SING,         SLUDGE,       REST,         EXTRASENSORY, SUBSTITUTE,   \
+	     SURF,         STRENGTH
 	; end
 
 	db 0 ; padding

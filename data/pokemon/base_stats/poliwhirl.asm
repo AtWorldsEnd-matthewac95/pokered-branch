@@ -10,15 +10,15 @@
 	INCBIN "gfx/pokemon/front/poliwhirl.pic", 0, 1 ; sprite dimensions
 	dw PoliwhirlPicFront, PoliwhirlPicBack
 
-	db BUBBLE, HYPNOSIS, WATER_GUN, NO_MOVE ; level 1 learnset
+	db HAZE, BUBBLE, GROWL, WATER_GUN ; level 1 learnset
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
 	tmhm MEGA_PUNCH,   BUBBLEBEAM,   MEGA_KICK,    TOXIC,        BODY_SLAM,    \
 	     HAZE,         SEISMIC_TOSS, WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
 	     ICY_WIND,     AMNESIA,      EARTHQUAKE,   PSYCHIC_M,    MIMIC,        \
-	     JUMP_KICK,    ICE_PUNCH,    BIDE,         SING,         REST,         \
-	     EXTRASENSORY, SUBSTITUTE,   SURF,         STRENGTH
+	     JUMP_KICK,    ICE_PUNCH,    BIDE,         SING,         SLUDGE,       \
+	     REST,         EXTRASENSORY, SUBSTITUTE,   SURF,         STRENGTH
 	; end
 
 	db 0 ; padding

@@ -10,15 +10,15 @@
 	INCBIN "gfx/pokemon/front/seadra.pic", 0, 1 ; sprite dimensions
 	dw SeadraPicFront, SeadraPicBack
 
-	db BUBBLE, SMOKESCREEN, NO_MOVE, NO_MOVE ; level 1 learnset
+	db BUBBLE, SMOKESCREEN, AGILITY, WATER_GUN ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
 	tmhm BUBBLEBEAM,   TOXIC,        PIN_MISSILE,  BODY_SLAM,    HAZE,         \
 	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   ICY_WIND,     \
 	     SMOKESCREEN,  DRAGON_RAGE,  MIMIC,        BIDE,         FLAMETHROWER, \
-	     FIRE_BLAST,   SCARY_FACE,   REST,         ROCK_TACKLE,  SUBSTITUTE,   \
-	     SURF
+	     FIRE_BLAST,   SCARY_FACE,   SLUDGE,       REST,         ROCK_TACKLE,  \
+	     SUBSTITUTE,   SURF
 	; end
 
 	db 0 ; padding

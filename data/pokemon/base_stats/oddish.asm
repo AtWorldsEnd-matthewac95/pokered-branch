@@ -15,8 +15,8 @@
 
 	; tm/hm learnset
 	tmhm TOXIC,        HAZE,         GIGA_DRAIN,   MEGA_DRAIN,   SOLARBEAM,    \
-	     MIMIC,        BIDE,         SWORDS_DANCE, REST,         SUBSTITUTE,   \
-	     CUT
+	     MIMIC,        BIDE,         SWORDS_DANCE, SLUDGE,       REST,         \
+	     SUBSTITUTE,   CUT
 	; end
 
 	db 0 ; padding
