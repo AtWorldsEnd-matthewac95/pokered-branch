@@ -42,42 +42,42 @@ CeladonCityText4:
 
 CeladonCityText5:
 	text_asm
-	CheckEvent EVENT_GOT_TM41
+	CheckEvent EVENT_GOT_TM13
 	jr nz, .asm_7053f
-	ld hl, TM41PreText
+	ld hl, TM13PreText
 	call PrintText
-	lb bc, TM_SOFTBOILED, 1
+	lb bc, TM_ICE_BEAM, 1
 	call GiveItem
 	jr c, .Success
-	ld hl, TM41NoRoomText
+	ld hl, TM13NoRoomText
 	call PrintText
 	jr .Done
 .Success
-	ld hl, ReceivedTM41Text
+	ld hl, ReceivedTM13Text
 	call PrintText
-	SetEvent EVENT_GOT_TM41
+	SetEvent EVENT_GOT_TM13
 	jr .Done
 .asm_7053f
-	ld hl, TM41ExplanationText
+	ld hl, TM13ExplanationText
 	call PrintText
 .Done
 	jp TextScriptEnd
 
-TM41PreText:
-	text_far _TM41PreText
+TM13PreText:
+	text_far _TM13PreText
 	text_end
 
-ReceivedTM41Text:
-	text_far _ReceivedTM41Text
+ReceivedTM13Text:
+	text_far _ReceivedTM13Text
 	sound_get_item_1
 	text_end
 
-TM41ExplanationText:
-	text_far _TM41ExplanationText
+TM13ExplanationText:
+	text_far _TM13ExplanationText
 	text_end
 
-TM41NoRoomText:
-	text_far _TM41NoRoomText
+TM13NoRoomText:
+	text_far _TM13NoRoomText
 	text_end
 
 CeladonCityText6:

@@ -147,3 +147,4 @@ SeafoamIslandsB3F_TextPointers:
 	dw BoulderText
 	dw BoulderText
 	dw BoulderText
+	dw PickUpItemText

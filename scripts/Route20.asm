@@ -80,11 +80,11 @@ Route20TrainerHeaders:
 Route20TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_20_TRAINER_0, 4, Route20BattleText1, Route20EndBattleText1, Route20AfterBattleText1
 Route20TrainerHeader1:
-	trainer EVENT_BEAT_ROUTE_20_TRAINER_1, 4, Route20BattleText2, Route20EndBattleText2, Route20AfterBattleText2
+	trainer EVENT_BEAT_ROUTE_20_TRAINER_1, 3, Route20BattleText2, Route20EndBattleText2, Route20AfterBattleText2
 Route20TrainerHeader2:
-	trainer EVENT_BEAT_ROUTE_20_TRAINER_2, 2, Route20BattleText3, Route20EndBattleText3, Route20AfterBattleText3
+	trainer EVENT_BEAT_ROUTE_20_TRAINER_2, 4, Route20BattleText3, Route20EndBattleText3, Route20AfterBattleText3
 Route20TrainerHeader3:
-	trainer EVENT_BEAT_ROUTE_20_TRAINER_3, 4, Route20BattleText4, Route20EndBattleText4, Route20AfterBattleText4
+	trainer EVENT_BEAT_ROUTE_20_TRAINER_3, 3, Route20BattleText4, Route20EndBattleText4, Route20AfterBattleText4
 Route20TrainerHeader4:
 	trainer EVENT_BEAT_ROUTE_20_TRAINER_4, 3, Route20BattleText5, Route20EndBattleText5, Route20AfterBattleText5
 Route20TrainerHeader5:

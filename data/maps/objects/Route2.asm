@@ -14,8 +14,8 @@ Route2_Object:
 	sign 11, 11, 4 ; Route2Text4
 
 	def_objects
-	object SPRITE_POKE_BALL, 13, 54, STAY, NONE, 1, MOON_STONE
-	object SPRITE_POKE_BALL, 13, 45, STAY, NONE, 2, HP_UP
+	object SPRITE_POKE_BALL, 13, 54, STAY, NONE, 1, TM_PAY_DAY
+	object SPRITE_POKE_BALL, 13, 45, STAY, NONE, 2, MOON_STONE
 
 	def_warps_to ROUTE_2
 

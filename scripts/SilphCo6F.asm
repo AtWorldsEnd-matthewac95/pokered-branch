@@ -49,7 +49,6 @@ SilphCo6F_TextPointers:
 	dw SilphCo6Text7
 	dw SilphCo6Text8
 	dw PickUpItemText
-	dw PickUpItemText
 
 SilphCo6TrainerHeaders:
 	def_trainers 6

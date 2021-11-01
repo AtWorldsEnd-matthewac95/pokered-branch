@@ -1,29 +1,12 @@
-_TM18PreReceiveText::
-	text "Oh, hi! I finally"
-	line "finished #MON!"
+_CeladonMart3Text1::
+	text "NORMAL or FIGHTING"
+	line "#MON giving"
+	cont "you trouble?"
 
-	para "Not done yet?"
-	line "This might be"
-	cont "useful!"
-	prompt
-
-_ReceivedTM18Text::
-	text "<PLAYER> received"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
-	text_end
-
-_TM18ExplanationText::
-	text "TM18 is COUNTER!"
-	line "Not like the one"
-	cont "I'm leaning on,"
-	cont "mind you!"
-	done
-
-_TM18NoRoomText::
-	text "Your pack is full"
-	line "of items!"
+	para "Try using a GHOST"
+	line "-type #MON, or"
+	cont "a #MON with"
+	cont "high DEFENSE!"
 	done
 
 _CeladonMart3Text2::

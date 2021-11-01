@@ -18,5 +18,6 @@ Route23_Object:
 	object SPRITE_GUARD, 12, 105, STAY, DOWN, 5 ; person
 	object SPRITE_GUARD, 8, 119, STAY, DOWN, 6 ; person
 	object SPRITE_GUARD, 8, 136, STAY, DOWN, 7 ; person
+	object SPRITE_POKE_BALL, 16, 70, STAY, NONE, 8, TM_WILL_O_WISP
 
 	def_warps_to ROUTE_23

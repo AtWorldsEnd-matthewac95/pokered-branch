@@ -21,7 +21,7 @@ SSAnne1FRooms_Object:
 	object SPRITE_LITTLE_GIRL, 2, 11, STAY, DOWN, 7 ; person
 	object SPRITE_FAIRY, 3, 11, STAY, DOWN, 8 ; person
 	object SPRITE_GIRL, 10, 13, STAY, RIGHT, 9 ; person
-	object SPRITE_POKE_BALL, 12, 15, STAY, NONE, 10, TM_BODY_SLAM
+	object SPRITE_POKE_BALL, 12, 15, STAY, NONE, 10, TM_SCARY_FACE
 	object SPRITE_GENTLEMAN, 21, 13, WALK, LEFT_RIGHT, 11 ; person
 
 	def_warps_to SS_ANNE_1F_ROOMS

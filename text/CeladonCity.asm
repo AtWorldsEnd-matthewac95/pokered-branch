@@ -28,7 +28,7 @@ _CeladonCityText4::
 	cont "coins for prizes!"
 	done
 
-_TM41PreText::
+_TM13PreText::
 	text "Hello, there!"
 
 	para "I've seen you,"
@@ -39,25 +39,25 @@ _TM41PreText::
 	line "dropping by!"
 	prompt
 
-_ReceivedTM41Text::
+_ReceivedTM13Text::
 	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_TM41ExplanationText::
-	text "TM41 teaches"
-	line "SOFTBOILED!"
+_TM13ExplanationText::
+	text "TM13 teaches"
+	line "ICE BEAM..."
 
-	para "Only one #MON"
+	para "Multiple #MON"
 	line "can use it!"
 
-	para "That #MON is"
-	line "CHANSEY!"
+	para "It can freeze a"
+	line "#MON!"
 	done
 
-_TM41NoRoomText::
+_TM13NoRoomText::
 	text "Oh, your pack is"
 	line "full of items!"
 	done

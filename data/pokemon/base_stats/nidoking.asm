@@ -19,8 +19,8 @@
 	     ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   ICY_WIND,     AMNESIA,      \
 	     THUNDERBOLT,  THUNDER,      EARTHQUAKE,   ROCK_SLIDE,   DIG,          \
 	     SHADOW_BALL,  MIMIC,        ICE_PUNCH,    BIDE,         FLAMETHROWER, \
-	     FIRE_BLAST,   SCARY_FACE,   THUNDERPUNCH, REST,         ROCK_TACKLE,  \
-	     FIRE_PUNCH,   SUBSTITUTE,   SURF,         STRENGTH
+	     FIRE_BLAST,   SCARY_FACE,   THUNDERPUNCH, SLUDGE,       REST,         \
+	     ROCK_TACKLE,  FIRE_PUNCH,   SUBSTITUTE,   SURF,         STRENGTH
 	; end
 
 	db 0 ; padding

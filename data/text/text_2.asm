@@ -821,6 +821,39 @@ _PokemonStuffText::
 	line "#MON stuff!"
 	done
 
+_TM20PreReceiveText::
+	text "Ack! You found me!"
+	line "Rats!"
+
+	para "I'm practicing to"
+	line "become a ninja"
+	cont "like master KOGA."
+
+	para "Maybe you could be"
+	line "a ninja too! Take"
+	cont "this!"
+	prompt
+
+_ReceivedTM20Text::
+	text "<PLAYER> received"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+_TM20ExplanationText::
+	text "TM20 is the ninja"
+	line "art, SMOKESCREEN!"
+
+	para "Use it to befuddle"
+	line "your foes!"
+	done
+
+_TM20NoRoomText::
+	text "Your pack's too"
+	line "full!"
+	done
+
 _OutOfSafariBallsText::
 	text "PA: Ding-dong!"
 

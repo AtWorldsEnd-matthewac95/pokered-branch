@@ -82,18 +82,18 @@ _ViridianCityText_191ca::
 	cont "have this TM."
 	prompt
 
-_ReceivedTM42Text::
+_ReceivedTM17Text::
 	text "<PLAYER> received"
-	line "TM42!@"
+	line "TM17!@"
 	text_end
 
-_TM42Explanation::
-	text "TM42 contains"
-	line "DREAM EATER..."
+_TM17Explanation::
+	text "TM17 contains"
+	line "AMNESIA... ..."
 	cont "...Snore..."
 	done
 
-_TM42NoRoomText::
+_TM17NoRoomText::
 	text "You have too much"
 	line "stuff already."
 	done

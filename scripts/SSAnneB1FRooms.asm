@@ -23,7 +23,6 @@ SSAnneB1FRooms_TextPointers:
 	dw SSAnne10Text8
 	dw PickUpItemText
 	dw PickUpItemText
-	dw PickUpItemText
 
 SSAnne10TrainerHeaders:
 	def_trainers

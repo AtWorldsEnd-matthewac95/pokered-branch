@@ -27,9 +27,9 @@ _CeladonMartRoofText_484fe::
 	para "@"
 	text_ram wStringBuffer
 	text " contains"
-	line "ICE BEAM!"
+	line "ICY WIND!"
 
-	para "It can freeze the"
+	para "It might slow the"
 	line "target sometimes!@"
 	text_end
 

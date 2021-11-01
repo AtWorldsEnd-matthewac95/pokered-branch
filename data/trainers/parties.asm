@@ -197,7 +197,7 @@ JrTrainerFData:
 	db 33, CLEFAIRY, 0
 	db 29, BELLSPROUT, ODDISH, TANGELA, 0
 ; Route 20
-	db 30, TENTACOOL, HORSEA, SEEL, 0
+	db 50, TENTACOOL, HORSEA, SEEL, 0
 
 PokemaniacData:
 ; Route 10
@@ -386,7 +386,7 @@ BeautyData:
 	db 27, RATTATA, PIKACHU, RATTATA, 0
 	db 29, CLEFAIRY, MEOWTH, 0
 ; Route 20
-	db 35, SEAKING, 0
+	db 60, SEAKING, GOLDUCK, 0
 	db 30, SHELLDER, SHELLDER, CLOYSTER, 0
 	db 32, POLIWAG, SEAKING, 0
 ; Route 15
@@ -399,7 +399,7 @@ BeautyData:
 	db 30, GOLDEEN, SEAKING, 0
 	db 29, STARYU, STARYU, STARYU, 0
 ; Route 20
-	db 30, SEADRA, HORSEA, SEADRA, 0
+	db 52, SEADRA, HORSEA, SEADRA, 0
 
 PsychicData:
 ; Saffron Gym

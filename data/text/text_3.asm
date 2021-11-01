@@ -123,6 +123,11 @@ _FellText::
 	text " fell!"
 	prompt
 
+_AllMonsStatsFellText::
+	text "<TARGET>'s"
+	line "STATS fell!"
+	prompt
+
 _RanFromBattleText::
 	text "<USER>"
 	line "ran from battle!"

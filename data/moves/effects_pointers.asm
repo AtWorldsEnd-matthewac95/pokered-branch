@@ -8,7 +8,7 @@ MoveEffectPointerTable:
 	dw FreezeBurnParalyzeEffect  ; FREEZE_SIDE_EFFECT
 	dw FreezeBurnParalyzeEffect  ; PARALYZE_SIDE_EFFECT1
 	dw ExplodeEffect             ; EXPLODE_EFFECT
-	dw DrainHPEffect             ; DREAM_EATER_EFFECT
+	dw AllStatsDownEffect        ; ALL_DOWN_EFFECT
 	dw NULL                      ; MIRROR_MOVE_EFFECT
 	dw StatModifierUpEffect      ; ATTACK_UP1_EFFECT
 	dw StatModifierUpEffect      ; DEFENSE_UP1_EFFECT
@@ -27,7 +27,7 @@ MoveEffectPointerTable:
 	dw ConversionEffect          ; CONVERSION_EFFECT
 	dw HazeEffect                ; HAZE_EFFECT
 	dw BideEffect                ; BIDE_EFFECT
-	dw ThrashPetalDanceEffect    ; THRASH_PETAL_DANCE_EFFECT
+	dw ThrashEffect              ; THRASH_EFFECT
 	dw SwitchAndTeleportEffect   ; SWITCH_AND_TELEPORT_EFFECT
 	dw TwoToFiveAttacksEffect    ; TWO_TO_FIVE_ATTACKS_EFFECT
 	dw TwoToFiveAttacksEffect    ; EFFECT_1E
@@ -35,7 +35,7 @@ MoveEffectPointerTable:
 	dw SleepEffect               ; SLEEP_EFFECT
 	dw PoisonEffect              ; POISON_SIDE_EFFECT2
 	dw FreezeBurnParalyzeEffect  ; BURN_SIDE_EFFECT2
-	dw FreezeBurnParalyzeEffect  ; unused effect
+	dw FreezeBurnParalyzeEffect  ; TRI_ATTACK_EFFECT
 	dw FreezeBurnParalyzeEffect  ; PARALYZE_SIDE_EFFECT2
 	dw FlinchSideEffect          ; FLINCH_SIDE_EFFECT2
 	dw OneHitKOEffect            ; OHKO_EFFECT
@@ -47,7 +47,7 @@ MoveEffectPointerTable:
 	dw TwoToFiveAttacksEffect    ; ATTACK_TWICE_EFFECT
 	dw NULL                      ; JUMP_KICK_EFFECT
 	dw MistEffect                ; MIST_EFFECT
-	dw FocusEnergyEffect         ; FOCUS_ENERGY_EFFECT
+	dw TwoToFiveAttacksEffect    ; ATTACK_THRICE_EFFECT
 	dw RecoilEffect              ; RECOIL_EFFECT
 	dw ConfusionEffect           ; CONFUSION_EFFECT
 	dw StatModifierUpEffect      ; ATTACK_UP2_EFFECT
@@ -64,18 +64,18 @@ MoveEffectPointerTable:
 	dw StatModifierDownEffect    ; SPECIAL_DOWN2_EFFECT
 	dw StatModifierDownEffect    ; ACCURACY_DOWN2_EFFECT
 	dw StatModifierDownEffect    ; EVASION_DOWN2_EFFECT
-	dw ReflectLightScreenEffect  ; LIGHT_SCREEN_EFFECT
-	dw ReflectLightScreenEffect  ; REFLECT_EFFECT
+	dw TwoToFiveAttacksEffect    ; ATTACK_FOUR_EFFECT
+	dw BurnEffect                ; BURN_EFFECT
 	dw PoisonEffect              ; POISON_EFFECT
 	dw ParalyzeEffect            ; PARALYZE_EFFECT
 	dw StatModifierDownEffect    ; ATTACK_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; DEFENSE_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; SPEED_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; SPECIAL_DOWN_SIDE_EFFECT
+	dw StatModifierDownEffect    ; ACCURACY_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; unused effect
 	dw StatModifierDownEffect    ; unused effect
-	dw StatModifierDownEffect    ; unused effect
-	dw StatModifierDownEffect    ; unused effect
+	dw StatModifierDownEffect    ; DEFENSE_DOWN2_SIDE_EFFECT
 	dw ConfusionSideEffect       ; CONFUSION_SIDE_EFFECT
 	dw TwoToFiveAttacksEffect    ; TWINEEDLE_EFFECT
 	dw NULL                      ; unused effect

@@ -20,7 +20,7 @@ HiddenItemCoords:
 	hidden_item ROUTE_13,                       1,  14
 	hidden_item ROUTE_13,                      16,  13
 	hidden_item POKEMON_MANSION_B1F,            1,   9
-	hidden_item SAFARI_ZONE_GATE,              10,   1 ; inaccessible
+	hidden_item POKEMON_TOWER_7F,              12,  16
 	hidden_item SAFARI_ZONE_WEST,               6,   5
 	hidden_item SILPH_CO_5F,                   12,   3
 	hidden_item SILPH_CO_9F,                    2,  15
@@ -34,7 +34,6 @@ HiddenItemCoords:
 	hidden_item POKEMON_MANSION_1F,             8,  16
 	hidden_item POKEMON_MANSION_3F,             1,   9
 	hidden_item ROUTE_23,                       9,  44
-	hidden_item ROUTE_23,                      19,  70
 	hidden_item ROUTE_23,                       8,  90
 	hidden_item VICTORY_ROAD_2F,                5,   2
 	hidden_item VICTORY_ROAD_2F,               26,   7

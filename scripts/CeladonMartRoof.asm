@@ -111,17 +111,17 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 	SetEvent EVENT_GOT_TM48
 	ret
 .gaveFreshWater
-	CheckEvent EVENT_GOT_TM13
+	CheckEvent EVENT_GOT_TM16
 	jr nz, .alreadyGaveDrink
 	ld hl, CeladonMartRoofText_484f3
 	call PrintText
 	call RemoveItemByIDBank12
-	lb bc, TM_ICE_BEAM, 1
+	lb bc, TM_ICY_WIND, 1
 	call GiveItem
 	jr nc, .bagFull
 	ld hl, CeladonMartRoofText_484f9
 	call PrintText
-	SetEvent EVENT_GOT_TM13
+	SetEvent EVENT_GOT_TM16
 	ret
 .bagFull
 	ld hl, CeladonMartRoofText_48526

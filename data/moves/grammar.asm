@@ -17,16 +17,16 @@ ExclamationPointMoveSets:
 	db TELEPORT
 	db MIMIC
 	db DOUBLE_TEAM
-	db BARRAGE
+	db POWDER_SNOW
 	db 0 ; end set
 
 ; set 3
 	db POUND
 	db SCRATCH
-	db VICEGRIP
+	db SAND_RAKE
 	db WING_ATTACK
 	db FLY
-	db BIND
+	db BULLET_SEED
 	db SLAM
 	db HORN_ATTACK
 	db BODY_SLAM
@@ -36,15 +36,15 @@ ExclamationPointMoveSets:
 	db LEER
 	db BITE
 	db GROWL
-	db ROAR
+	db DRAGON_ROAR
 	db SING
 	db PECK
-	db COUNTER
+	db DUST_DEVIL
 	db STRENGTH
 	db ABSORB
 	db STRING_SHOT
 	db EARTHQUAKE
-	db FISSURE
+	db TRIPLE_BITE
 	db DIG
 	db TOXIC
 	db SCREECH
@@ -54,17 +54,17 @@ ExclamationPointMoveSets:
 	db DEFENSE_CURL
 	db METRONOME
 	db LICK
-	db CLAMP
-	db CONSTRICT
+	db POISON_JAB
+	db EXTRASENSORY
 	db POISON_GAS
 	db LEECH_LIFE
 	db BUBBLE
 	db FLASH
 	db SPLASH
 	db ACID_ARMOR
-	db FURY_SWIPES
+	db HURRICANE
 	db REST
-	db SHARPEN
+	db QUAD_PUNCH
 	db SLASH
 	db SUBSTITUTE
 	db 0 ; end set

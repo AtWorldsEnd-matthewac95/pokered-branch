@@ -23,24 +23,24 @@ _LTSurgeThunderBadgeInfoText::
 	line "kid! Take this!"
 	done
 
-_ReceivedTM24Text::
+_ReceivedTM45Text::
 	text "<PLAYER> received "
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_TM24ExplanationText::
+_TM45ExplanationText::
 	text_start
 
-	para "TM24 contains"
-	line "THUNDERBOLT!"
+	para "TM45 contains"
+	line "THUNDER WAVE"
 
 	para "Teach it to an"
 	line "electric #MON!"
 	done
 
-_TM24NoRoomText::
+_TM45NoRoomText::
 	text "Yo kid, make room"
 	line "in your pack!"
 	done

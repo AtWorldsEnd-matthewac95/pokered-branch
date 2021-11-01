@@ -1450,7 +1450,7 @@ DewgongEvosMoves:
 	db 25, HORN_ATTACK
 	db 36, AURORA_BEAM
 	db 48, REST
-	db 54, ICE_BEAM
+	db 58, ICE_BEAM
 	db 0
 
 MissingNo79EvosMoves:

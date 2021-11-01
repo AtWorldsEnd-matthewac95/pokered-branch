@@ -19,8 +19,8 @@
 	     BLIZZARD,     HYPER_BEAM,   ICY_WIND,     THUNDERBOLT,  THUNDER,      \
 	     EARTHQUAKE,   ROCK_SLIDE,   DIG,          SHADOW_BALL,  MIMIC,        \
 	     ICE_PUNCH,    BIDE,         FLAMETHROWER, FIRE_BLAST,   SING,         \
-	     SCARY_FACE,   THUNDERPUNCH, REST,         ROCK_TACKLE,  FIRE_PUNCH,   \
-	     SUBSTITUTE,   SURF,         STRENGTH
+	     SCARY_FACE,   THUNDERPUNCH, SLUDGE,       REST,         ROCK_TACKLE,  \
+	     FIRE_PUNCH,   SUBSTITUTE,   SURF,         STRENGTH
 	; end
 
 	db 0 ; padding

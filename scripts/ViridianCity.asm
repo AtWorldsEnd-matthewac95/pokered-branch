@@ -231,23 +231,23 @@ ViridianCityText_19191:
 
 ViridianCityText6:
 	text_asm
-	CheckEvent EVENT_GOT_TM42
+	CheckEvent EVENT_GOT_TM17
 	jr nz, .got_item
 	ld hl, ViridianCityText_191ca
 	call PrintText
-	lb bc, TM_DREAM_EATER, 1
+	lb bc, TM_AMNESIA, 1
 	call GiveItem
 	jr nc, .bag_full
-	ld hl, ReceivedTM42Text
+	ld hl, ReceivedTM17Text
 	call PrintText
-	SetEvent EVENT_GOT_TM42
+	SetEvent EVENT_GOT_TM17
 	jr .done
 .bag_full
-	ld hl, TM42NoRoomText
+	ld hl, TM17NoRoomText
 	call PrintText
 	jr .done
 .got_item
-	ld hl, TM42Explanation
+	ld hl, TM17Explanation
 	call PrintText
 .done
 	jp TextScriptEnd
@@ -256,17 +256,17 @@ ViridianCityText_191ca:
 	text_far _ViridianCityText_191ca
 	text_end
 
-ReceivedTM42Text:
-	text_far _ReceivedTM42Text
+ReceivedTM17Text:
+	text_far _ReceivedTM17Text
 	sound_get_item_2
 	text_end
 
-TM42Explanation:
-	text_far _TM42Explanation
+TM17Explanation:
+	text_far _TM17Explanation
 	text_end
 
-TM42NoRoomText:
-	text_far _TM42NoRoomText
+TM17NoRoomText:
+	text_far _TM17NoRoomText
 	text_end
 
 ViridianCityText7:

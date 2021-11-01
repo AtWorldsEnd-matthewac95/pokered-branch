@@ -24,12 +24,12 @@
 ; Viridian City events
 	const_next $28
 	const EVENT_VIRIDIAN_GYM_OPEN
-	const EVENT_GOT_TM42
+	const EVENT_GOT_TM17
 	const_skip 14
 	const EVENT_OAK_GOT_PARCEL
 	const EVENT_GOT_OAKS_PARCEL
 	const_skip 22
-	const EVENT_GOT_TM27
+	const EVENT_GOT_TM26
 	const EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	const EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0
 	const EVENT_BEAT_VIRIDIAN_GYM_TRAINER_1
@@ -59,7 +59,7 @@
 	const EVENT_BEAT_CERULEAN_GYM_TRAINER_0
 	const EVENT_BEAT_CERULEAN_GYM_TRAINER_1
 	const_skip 2
-	const EVENT_GOT_TM11
+	const EVENT_GOT_TM03
 	const EVENT_BEAT_MISTY
 	const EVENT_GOT_BICYCLE
 
@@ -111,17 +111,17 @@
 	const EVENT_BEAT_VERMILION_GYM_TRAINER_1
 	const EVENT_BEAT_VERMILION_GYM_TRAINER_2
 	const_skip
-	const EVENT_GOT_TM24
+	const EVENT_GOT_TM45
 	const EVENT_BEAT_LT_SURGE
 
 ; Celadon City events
 	const_next $180
-	const EVENT_GOT_TM41
-	const_skip 11
 	const EVENT_GOT_TM13
+	const_skip 11
+	const EVENT_GOT_TM16
 	const EVENT_GOT_TM48
 	const EVENT_GOT_TM49
-	const EVENT_GOT_TM18
+	const EVENT_GOT_TM20 ; actually for Fuchsia, just not moving out of fear
 	const_skip 24
 	const EVENT_GOT_TM21
 	const EVENT_BEAT_ERIKA
@@ -204,7 +204,7 @@
 	const EVENT_GOT_HITMONLEE
 	const EVENT_GOT_HITMONCHAN
 	const_skip 8
-	const EVENT_GOT_TM46
+	const EVENT_GOT_TM29
 	const EVENT_BEAT_SABRINA
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_0
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_1
@@ -216,7 +216,7 @@
 	const_skip 46
 	const EVENT_SILPH_CO_RECEPTIONIST_AT_DESK
 	const_skip 24
-	const EVENT_GOT_TM29
+	const EVENT_GOT_TM46
 
 ; Route 1 events
 	const_next $3C0

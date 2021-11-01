@@ -128,7 +128,7 @@ SHOW EQU $15
 	const HS_SS_ANNE_2F_ROOMS_ITEM_2       ; 74 X
 	const HS_SS_ANNE_B1F_ROOMS_ITEM_1      ; 75 X
 	const HS_SS_ANNE_B1F_ROOMS_ITEM_2      ; 76 X
-	const HS_SS_ANNE_B1F_ROOMS_ITEM_3      ; 77 X
+	const HS_SEAFOAM_ISLANDS_B3F_ITEM      ; 77 X
 	const HS_VICTORY_ROAD_3F_ITEM_1        ; 78 X
 	const HS_VICTORY_ROAD_3F_ITEM_2        ; 79 X
 	const HS_VICTORY_ROAD_3F_BOULDER       ; 7A
@@ -171,7 +171,7 @@ SHOW EQU $15
 	const HS_SILPH_CO_6F_2                 ; 9F
 	const HS_SILPH_CO_6F_3                 ; A0
 	const HS_SILPH_CO_6F_ITEM_1            ; A1 X
-	const HS_SILPH_CO_6F_ITEM_2            ; A2 X
+	const HS_ROUTE_23_ITEM                 ; A2 X
 	const HS_SILPH_CO_7F_1                 ; A3
 	const HS_SILPH_CO_7F_2                 ; A4
 	const HS_SILPH_CO_7F_3                 ; A5

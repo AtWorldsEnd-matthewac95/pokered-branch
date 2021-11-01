@@ -216,6 +216,8 @@ FreezeBurnParalyzeEffect:
 	jr c, .regular_effectiveness
 ; extra effectiveness
 	ld b, 30 percent + 1
+	cp TRI_ATTACK_EFFECT
+	jr z, .regular_effectiveness ; if this is the TRI_ATTACK_EFFECT, continue without adjusting
 	sub BURN_SIDE_EFFECT2 - BURN_SIDE_EFFECT1 ; treat extra effective as regular from now on
 .regular_effectiveness
 	push af
@@ -224,6 +226,22 @@ FreezeBurnParalyzeEffect:
 	pop bc
 	ret nc ; do nothing if random value is >= 1A or 4D [no status applied]
 	ld a, b ; what type of effect is this?
+	cp TRI_ATTACK_EFFECT
+	jr nz, .discoverEffectType ; if we're not using TRI_ATTACK_EFFECT, continue on as normal
+	call BattleRandom
+	cp $56 ; 85/256 chance it's freeze
+	jr nc, .triAttackParalyzeBurn
+	ld a, FREEZE_SIDE_EFFECT
+	jr .discoverEffectType
+.triAttackParalyzeBurn
+	call BattleRandom
+	cp $80 ; 50/50 shot from here to be paralyze or burn
+	jr nc, .triAttackBurn
+	ld a, PARALYZE_SIDE_EFFECT1
+	jr .discoverEffectType
+.triAttackBurn
+	ld a, BURN_SIDE_EFFECT1
+.discoverEffectType
 	cp BURN_SIDE_EFFECT1
 	jr z, .burn1
 	cp FREEZE_SIDE_EFFECT
@@ -544,12 +562,6 @@ StatModifierDownEffect:
 	ld hl, wPlayerMonStatMods
 	ld de, wEnemyMoveEffect
 	ld bc, wPlayerBattleStatus1
-	ld a, [wLinkState]
-	cp LINK_STATE_BATTLING
-	jr z, .statModifierDownEffect
-	call BattleRandom
-	cp $40 ; 1/4 chance to miss by in regular battle
-	jp c, MoveMissed
 .statModifierDownEffect
 	call CheckTargetSubstitute ; can't hit through substitute
 	jp nz, MoveMissed
@@ -560,7 +572,12 @@ StatModifierDownEffect:
 	cp $55 ; 85/256 chance for side effects
 	jp nc, CantLowerAnymore
 	ld a, [de]
-	sub ATTACK_DOWN_SIDE_EFFECT ; map each stat to 0-3
+	cp DEFENSE_DOWN2_SIDE_EFFECT ; if this is the defense down 2 side effect (Cut), treat this as the non-side-effect from now on.
+	jr z, .sideEffect
+	ld de, DEFENSE_DOWN2_EFFECT
+	jr .decrementStatModAccuracyPassed
+.sideEffect
+	sub ATTACK_DOWN_SIDE_EFFECT ; map each stat to 0-4
 	jr .decrementStatMod
 .nonSideEffect ; non-side effects only
 	push hl
@@ -573,6 +590,7 @@ StatModifierDownEffect:
 	ld a, [wMoveMissed]
 	and a
 	jp nz, MoveMissed
+.decrementStatModAccuracyPassed
 	ld a, [bc]
 	bit INVULNERABLE, a ; fly/dig
 	jp nz, MoveMissed
@@ -640,7 +658,7 @@ StatModifierDownEffect:
 	ld b, $0
 	add hl, bc
 	pop bc
-	xor a
+	xor a ; clears a
 	ldh [hMultiplicand], a
 	ld a, [de]
 	ldh [hMultiplicand + 1], a
@@ -755,6 +773,142 @@ PrintStatText:
 	ld bc, $a
 	jp CopyData
 
+AllStatsDownEffect:
+	ld hl, wEnemyMonStatMods
+	ld bc, wEnemyBattleStatus1
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .allStatModifierDownEffect
+	ld hl, wPlayerMonStatMods
+	ld bc, wPlayerBattleStatus1
+.allStatModifierDownEffect
+	call CheckTargetSubstitute ; can't hit through substitute
+	jp nz, MoveMissed
+	push hl
+	push de
+	push bc
+	call MoveHitTest ; apply accuracy tests
+	pop bc
+	pop de
+	pop hl
+	ld a, [wMoveMissed]
+	and a
+	jp nz, MoveMissed
+	ld a, [bc]
+	bit INVULNERABLE, a ; fly/dig
+	jp nz, MoveMissed
+.allStatsDownPreLoop
+	ld d, $0
+	ld e, $0
+	push de
+	jr .allStatsDownLoop
+.allStatsDownLoopSuccess
+	pop de
+	ld d, $1 ; if this is not ever set, the "Nothing happened" text will display instead
+	push de
+	jr .allStatsDownLoopContinue
+.allStatsDownLoopContinue_PopHL
+	pop hl
+.allStatsDownLoopContinue
+	pop de
+	inc e
+	ld a, e
+	cp $4 ; once we reach ACCURACY (4), we don't lower any more stats
+	jr z, .allStatsDownLoopDone
+	push de
+.allStatsDownLoop
+	ld c, $1 ; hardcode a 1 since we'll iterate through all relevant stats
+	ld b, $0
+	add hl, bc
+	ld b, [hl]
+	dec b ; dec corresponding stat mod
+	jr z, .allStatsDownLoopContinue ; if stat mod is 1 (-6), can't lower anymore
+	ld [hl], b ; save modified mod
+	push hl
+	ld hl, wEnemyMonAttack + 1
+	ld de, wEnemyMonUnmodifiedAttack
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .allStatsDownPointToStat
+	ld hl, wBattleMonAttack + 1
+	ld de, wPlayerMonUnmodifiedAttack
+.allStatsDownPointToStat
+	push bc
+	sla c
+	ld b, $0
+	add hl, bc ; hl = modified stat
+	ld a, c
+	add e
+	ld e, a
+	jr nc, .allStatsDownNoCarry
+	inc d ; de = unmodified stat
+.allStatsDownNoCarry
+	pop bc
+	ld a, [hld]
+	sub $1 ; can't lower stat below 1 (-6)
+	jr nz, .allStatsDownRecalculateStat
+	ld a, [hl]
+	and a
+	jp z, allStatsDownLoopContinue_PopHL
+.allStatsDownRecalculateStat
+; recalculate affected stat
+; paralysis and burn penalties, as well as badge boosts are ignored
+	push hl
+	push bc
+	ld hl, StatModifierRatios
+	dec b
+	sla b
+	ld c, b
+	ld b, $0
+	add hl, bc
+	pop bc
+	xor a
+	ldh [hMultiplicand], a
+	ld a, [de]
+	ldh [hMultiplicand + 1], a
+	inc de
+	ld a, [de]
+	ldh [hMultiplicand + 2], a
+	ld a, [hli]
+	ldh [hMultiplier], a
+	call Multiply
+	ld a, [hl]
+	ldh [hDivisor], a
+	ld b, $4
+	call Divide
+	pop hl
+	ldh a, [hProduct + 3]
+	ld b, a
+	ldh a, [hProduct + 2]
+	or b
+	jr nz, .allStatsDownUpdateLoweredStat
+	ldh [hMultiplicand + 1], a
+	ld a, $1
+	ldh [hMultiplicand + 2], a
+.allStatsDownUpdateLoweredStat
+	ldh a, [hProduct + 2]
+	ld [hli], a
+	ldh a, [hProduct + 3]
+	ld [hl], a
+	pop hl
+	jr .allStatsDownLoopSuccess
+.allStatsDownLoopDone
+	ld a, d
+	jr z, .allStatsDownNothingHappened
+	ldh a, [hWhoseTurn]
+	and a
+	call nz, ApplyBadgeStatBoosts ; whenever the player uses a stat-down move, badge boosts get reapplied again to every stat,
+	                              ; even to those not affected by the stat-up move (will be boosted further)
+	ld hl, AllMonsStatsFellText
+	call PrintText
+.allStatsDownNothingHappened
+	ld hl, NothingHappenedText
+	jp PrintText
+
+AllMonsStatsFellText:
+	text_far _AllMonsStatsFellText
+	text_end
+
 INCLUDE "data/battle/stat_mod_names.asm"
 
 INCLUDE "data/battle/stat_modifiers.asm"
@@ -786,21 +940,21 @@ BideEffect:
 	add XSTATITEM_ANIM
 	jp PlayBattleAnimation2
 
-ThrashPetalDanceEffect:
+ThrashEffect:
 	ld hl, wPlayerBattleStatus1
 	ld de, wPlayerNumAttacksLeft
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .thrashPetalDanceEffect
+	jr z, .thrashEffect
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyNumAttacksLeft
-.thrashPetalDanceEffect
-	set THRASHING_ABOUT, [hl] ; mon is now using thrash/petal dance
+.thrashEffect
+	set THRASHING_ABOUT, [hl] ; mon is now using thrash/petal dance/outrage
 	call BattleRandom
 	and $1
 	inc a
 	inc a
-	ld [de], a ; set thrash/petal dance counter to 2 or 3 at random
+	ld [de], a ; set thrash/petal dance/outrage counter to 2 or 3 at random
 	ldh a, [hWhoseTurn]
 	add ANIM_B0
 	jp PlayBattleAnimation2
@@ -899,13 +1053,6 @@ SwitchAndTeleportEffect:
 	call DelayFrames
 	pop af
 	ld hl, RanFromBattleText
-	cp TELEPORT
-	jr z, .printText
-	ld hl, RanAwayScaredText
-	cp ROAR
-	jr z, .printText
-	ld hl, WasBlownAwayText
-.printText
 	jp PrintText
 
 RanFromBattleText:
@@ -944,7 +1091,13 @@ TwoToFiveAttacksEffect:
 	cp TWINEEDLE_EFFECT
 	jr z, .twineedle
 	cp ATTACK_TWICE_EFFECT
-	ld a, $2 ; number of hits it's always 2 for ATTACK_TWICE_EFFECT
+	ld a, $2 ; number of hits is always 2 for ATTACK_TWICE_EFFECT
+	jr z, .saveNumberOfHits
+	cp ATTACK_THRICE_EFFECT
+	ld a, $3 ; number of hits is always 3 for ATTACK_THRICE_EFFECT
+	jr z, .saveNumberOfHits
+	CP ATTACK_FOUR_EFFECT
+	ld a, $4 ; number of hits is always 4 for ATTACK_FOUR_EFFECT
 	jr z, .saveNumberOfHits
 ; for TWO_TO_FIVE_ATTACKS_EFFECT 3/8 chance for 2 and 3 hits, and 1/8 chance for 4 and 5 hits
 	call BattleRandom
@@ -1031,14 +1184,8 @@ ChargeMoveEffectText:
 	text_far _ChargeMoveEffectText
 	text_asm
 	ld a, [wChargeMoveNum]
-	cp RAZOR_WIND
-	ld hl, MadeWhirlwindText
-	jr z, .gotText
 	cp SOLARBEAM
 	ld hl, TookInSunlightText
-	jr z, .gotText
-	cp SKULL_BASH
-	ld hl, LoweredItsHeadText
 	jr z, .gotText
 	cp SKY_ATTACK
 	ld hl, SkyAttackGlowingText
@@ -1159,6 +1306,9 @@ ConfusionEffectFailed:
 	ld c, 50
 	call DelayFrames
 	jp ConditionalPrintButItFailed
+
+BurnEffect:
+	jpfar BurnEffect_
 
 ParalyzeEffect:
 	jpfar ParalyzeEffect_

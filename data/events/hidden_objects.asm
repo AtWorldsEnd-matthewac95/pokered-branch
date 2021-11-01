@@ -32,7 +32,7 @@ HiddenObjectMaps:
 	db COLOSSEUM
 	db VIRIDIAN_FOREST
 	db MT_MOON_B2F
-	db INDIGO_PLATEAU
+	db FUCHSIA_CITY
 	db ROUTE_25
 	db ROUTE_9
 	db SS_ANNE_KITCHEN
@@ -121,7 +121,7 @@ HiddenObjectPointers:
 	dw ColosseumHiddenObjects
 	dw ViridianForestHiddenObjects
 	dw MtMoon3HiddenObjects
-	dw IndigoPlateauHiddenObjects
+	dw FuchsiaCityHiddenObjects
 	dw Route25HiddenObjects
 	dw Route9HiddenObjects
 	dw SSAnne6HiddenObjects
@@ -132,7 +132,7 @@ HiddenObjectPointers:
 	dw SaffronPokecenterHiddenObjects
 	dw PokemonTower5HiddenObjects
 	dw Route13HiddenObjects
-	dw SafariZoneEntranceHiddenObjects
+	dw PokemonTower7HiddenObjects
 	dw SafariZoneWestHiddenObjects
 	dw SilphCo5FHiddenObjects
 	dw SilphCo9FHiddenObjects
@@ -422,9 +422,9 @@ MtMoon3HiddenObjects:
 	hidden_object 33,  9, ETHER, HiddenItems
 	db -1 ; end
 
-IndigoPlateauHiddenObjects:
-	hidden_object  8, 13, $ff, PrintIndigoPlateauHQText ; inaccessible
-	hidden_object 11, 13, SPRITE_FACING_DOWN, PrintIndigoPlateauHQText ; inaccessible
+FuchsiaCityHiddenObjects:
+	hidden_object  1,  1, $ff, PrintIndigoPlateauHQText ; inaccessible
+	hidden_object 16, 15, SPRITE_FACING_DOWN, PrintSmokescreenGuyText ; inaccessible
 	db -1 ; end
 
 Route25HiddenObjects:
@@ -477,8 +477,8 @@ Route13HiddenObjects:
 	hidden_object 16, 13, CALCIUM, HiddenItems
 	db -1 ; end
 
-SafariZoneEntranceHiddenObjects:
-	hidden_object 10,  1, NUGGET, HiddenItems ; inaccessible
+PokemonTower7HiddenObjects:
+	hidden_object 12, 16, TM_SHADOW_BALL, HiddenItems
 	db -1 ; end
 
 SafariZoneWestHiddenObjects:
@@ -515,7 +515,7 @@ SeafoamIslands3HiddenObjects:
 	db -1 ; end
 
 SeafoamIslands5HiddenObjects:
-	hidden_object 25, 17, ULTRA_BALL, HiddenItems
+	hidden_object 25, 17, HP_UP, HiddenItems
 	db -1 ; end
 
 Mansion1HiddenObjects:
@@ -540,7 +540,6 @@ Mansion4HiddenObjects:
 
 Route23HiddenObjects:
 	hidden_object  9, 44, FULL_RESTORE, HiddenItems
-	hidden_object 19, 70, ULTRA_BALL, HiddenItems
 	hidden_object  8, 90, MAX_ETHER, HiddenItems
 	db -1 ; end
 

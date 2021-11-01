@@ -21,6 +21,6 @@ SafariZoneNorth_Object:
 
 	def_objects
 	object SPRITE_POKE_BALL, 25, 1, STAY, NONE, 1, PROTEIN
-	object SPRITE_POKE_BALL, 19, 7, STAY, NONE, 2, TM_SKULL_BASH
+	object SPRITE_POKE_BALL, 19, 7, STAY, NONE, 2, TM_PIN_MISSILE
 
 	def_warps_to SAFARI_ZONE_NORTH

@@ -2200,7 +2200,7 @@ IsCryMove:
 	ld a, [wAnimationID]
 	cp GROWL
 	jr z, .CryMove
-	cp ROAR
+	cp DRAGON_ROAR
 	jr z, .CryMove
 	and a ; clear carry
 	ret
