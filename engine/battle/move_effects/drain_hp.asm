@@ -86,19 +86,11 @@ DrainHPEffect_:
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveEffect]
-	jr z, .next3
+	jr z, .printText
 	ld a, [wEnemyMoveEffect]
-.next3
-	cp DREAM_EATER_EFFECT
-	jr nz, .printText
-	ld hl, DreamWasEatenText
 .printText
 	jp PrintText
 
 SuckedHealthText:
 	text_far _SuckedHealthText
-	text_end
-
-DreamWasEatenText:
-	text_far _DreamWasEatenText
 	text_end

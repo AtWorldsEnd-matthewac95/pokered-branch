@@ -424,7 +424,7 @@ MtMoon3HiddenObjects:
 
 FuchsiaCityHiddenObjects:
 	hidden_object  1,  1, $ff, PrintIndigoPlateauHQText ; inaccessible
-	hidden_object 16, 15, SPRITE_FACING_DOWN, PrintSmokescreenGuyText ; inaccessible
+	hidden_object 16, 15, SPRITE_FACING_DOWN, PrintSmokescreenGuyText
 	db -1 ; end
 
 Route25HiddenObjects:

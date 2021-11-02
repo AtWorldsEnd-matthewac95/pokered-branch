@@ -562,6 +562,12 @@ StatModifierDownEffect:
 	ld hl, wPlayerMonStatMods
 	ld de, wEnemyMoveEffect
 	ld bc, wPlayerBattleStatus1
+	ld a, [wLinkState]
+	cp LINK_STATE_BATTLING
+	jr z, .statModifierDownEffect
+	call BattleRandom
+	cp $40 ; 1/4 chance to miss by in regular battle
+	jp c, .statModifierDownEffect ; removing this dumb miss behavior without changing the code too much
 .statModifierDownEffect
 	call CheckTargetSubstitute ; can't hit through substitute
 	jp nz, MoveMissed
@@ -573,7 +579,7 @@ StatModifierDownEffect:
 	jp nc, CantLowerAnymore
 	ld a, [de]
 	cp DEFENSE_DOWN2_SIDE_EFFECT ; if this is the defense down 2 side effect (Cut), treat this as the non-side-effect from now on.
-	jr z, .sideEffect
+	jr nz, .sideEffect
 	ld de, DEFENSE_DOWN2_EFFECT
 	jr .decrementStatModAccuracyPassed
 .sideEffect
@@ -849,7 +855,7 @@ AllStatsDownEffect:
 	jr nz, .allStatsDownRecalculateStat
 	ld a, [hl]
 	and a
-	jp z, allStatsDownLoopContinue_PopHL
+	jr z, .allStatsDownLoopContinue_PopHL
 .allStatsDownRecalculateStat
 ; recalculate affected stat
 ; paralysis and burn penalties, as well as badge boosts are ignored
@@ -1053,6 +1059,13 @@ SwitchAndTeleportEffect:
 	call DelayFrames
 	pop af
 	ld hl, RanFromBattleText
+	cp TELEPORT
+	jr z, .printText
+	ld hl, RanFromBattleText
+	cp DRAGON_ROAR
+	jr z, .printText
+	ld hl, RanFromBattleText
+.printText
 	jp PrintText
 
 RanFromBattleText:
@@ -1184,9 +1197,15 @@ ChargeMoveEffectText:
 	text_far _ChargeMoveEffectText
 	text_asm
 	ld a, [wChargeMoveNum]
+	cp a ; Razor Wind was removed
+	ld hl, MadeWhirlwindText
+	jr nz, .gotText
 	cp SOLARBEAM
 	ld hl, TookInSunlightText
 	jr z, .gotText
+	cp a ; Skull Bash was removed
+	ld hl, LoweredItsHeadText
+	jr nz, .gotText
 	cp SKY_ATTACK
 	ld hl, SkyAttackGlowingText
 	jr z, .gotText
@@ -1532,9 +1551,6 @@ HealEffect:
 
 TransformEffect:
 	jpfar TransformEffect_
-
-ReflectLightScreenEffect:
-	jpfar ReflectLightScreenEffect_
 
 NothingHappenedText:
 	text_far _NothingHappenedText

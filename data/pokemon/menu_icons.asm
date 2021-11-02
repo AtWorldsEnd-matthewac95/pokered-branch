@@ -51,17 +51,17 @@ MonPartyData:
 	nybble ICON_BUG       ; Venomoth
 	nybble ICON_MON       ; Diglett
 	nybble ICON_MON       ; Dugtrio
-	nybble ICON_MON       ; Meowth
-	nybble ICON_MON       ; Persian
+	nybble ICON_QUADRUPED ; Meowth
+	nybble ICON_QUADRUPED ; Persian
 	nybble ICON_MON       ; Psyduck
 	nybble ICON_MON       ; Golduck
 	nybble ICON_MON       ; Mankey
 	nybble ICON_MON       ; Primeape
 	nybble ICON_QUADRUPED ; Growlithe
 	nybble ICON_QUADRUPED ; Arcanine
-	nybble ICON_MON       ; Poliwag
-	nybble ICON_MON       ; Poliwhirl
-	nybble ICON_MON       ; Poliwrath
+	nybble ICON_WATER     ; Poliwag
+	nybble ICON_WATER     ; Poliwhirl
+	nybble ICON_WATER     ; Poliwrath
 	nybble ICON_MON       ; Abra
 	nybble ICON_MON       ; Kadabra
 	nybble ICON_MON       ; Alakazam

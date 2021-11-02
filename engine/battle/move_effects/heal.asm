@@ -118,3 +118,7 @@ FellAsleepBecameHealthyText:
 RegainedHealthText:
 	text_far _RegainedHealthText
 	text_end
+
+EffectCallBattleCore:
+	ld b, BANK(BattleCore)
+	jp Bankswitch

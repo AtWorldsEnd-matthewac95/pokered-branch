@@ -378,6 +378,17 @@ MainInBattleLoop:
 	ld a, [wEnemySelectedMove]
 	cp QUICK_ATTACK
 	jr z, .enemyMovesFirst ; if enemy used Quick Attack and player didn't
+	ld a, [wPlayerSelectedMove]
+	cp a ; short-circuiting logic, the game no longer knows about Counter
+	jr z, .playerDidNotUseCounter
+	ld a, [wEnemySelectedMove]
+	cp a ; short-circuiting logic, the game no longer knows about Counter
+	jr z, .compareSpeed
+	jr .enemyMovesFirst
+.playerDidNotUseCounter
+	ld a, [wEnemySelectedMove]
+	cp a ; short-circuiting logic, the game no longer knows about Counter
+	jr nz, .playerMovesFirst
 .compareSpeed
 	ld de, wBattleMonSpeed ; player speed value
 	ld hl, wEnemyMonSpeed ; enemy speed value
@@ -3100,6 +3111,7 @@ PlayerCalcMoveDamage:
 	call IsInArray
 	jp c, .moveHitTest ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation
 	call CriticalHitTest
+	call HandleCounterMove
 	jr z, handleIfPlayerMoveMissed
 	call GetDamageVarsForPlayerAttack
 	call CalculateDamage
@@ -3514,7 +3526,7 @@ CheckPlayerStatusConditions:
 
 .MultiturnMoveCheck
 	bit USING_TRAPPING_MOVE, [hl] ; is mon using multi-turn move?
-	jp z, .checkPlayerStatusConditionsDone ; if we made it this far, mon can move normally this turn
+	jp z, .RageCheck
 	ld hl, AttackContinuesText
 	call PrintText
 	ld a, [wPlayerNumAttacksLeft]
@@ -3523,6 +3535,16 @@ CheckPlayerStatusConditions:
 	ld hl, getPlayerAnimationType ; if it didn't, skip damage calculation (deal damage equal to last hit),
 	                ; DecrementPP and MoveHitTest
 	jp nz, .returnToHL
+	jp .returnToHL
+
+.RageCheck
+	ld a, [wPlayerBattleStatus2]
+	bit USING_RAGE, a ; is mon using rage?
+	jp z, .checkPlayerStatusConditionsDone
+	call GetMoveName ; if we made it this far, mon can move normally this turn
+	xor a
+	ld [wPlayerMoveEffect], a
+	ld hl, PlayerCanExecuteMove
 	jp .returnToHL
 
 .returnToHL
@@ -4622,6 +4644,66 @@ CriticalHitTest:
 
 INCLUDE "data/battle/critical_hit_moves.asm"
 
+; function to determine if Counter hits and if so, how much damage it does
+HandleCounterMove:
+; The variables checked by Counter are updated whenever the cursor points to a new move in the battle selection menu.
+; This is irrelevant for the opponent's side outside of link battles, since the move selection is controlled by the AI.
+; However, in the scenario where the player switches out and the opponent uses Counter,
+; the outcome may be affected by the player's actions in the move selection menu prior to switching the Pokemon.
+; This might also lead to desync glitches in link battles.
+
+	ldh a, [hWhoseTurn] ; whose turn
+	and a
+; player's turn
+	ld hl, wEnemySelectedMove
+	ld de, wEnemyMovePower
+	ld a, [wPlayerSelectedMove]
+	jr z, .next
+; enemy's turn
+	ld hl, wPlayerSelectedMove
+	ld de, wPlayerMovePower
+	ld a, [wEnemySelectedMove]
+.next
+	cp a ; short-circuiting function, should always set z flag
+	ret z ; return
+	ld a, $01
+	ld [wMoveMissed], a
+	ld a, [hl]
+	cp a ; short-circuiting function, should always set z flag
+	ret z ; miss
+	ld a, [de]
+	and a
+	ret z
+	inc de
+	ld a, [de]
+	and a
+	jr z, .counterableType
+	cp FIGHTING
+	jr z, .counterableType
+	xor a
+	ret
+.counterableType
+	ld hl, wDamage
+	ld a, [hli]
+	or [hl]
+	ret z
+	ld a, [hl]
+	add a
+	ldd [hl], a
+	ld a, [hl]
+	adc a
+	ld [hl], a
+	jr nc, .noCarry
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+.noCarry
+	xor a
+	ld [wMoveMissed], a
+	call MoveHitTest
+	xor a
+	ret
+
 ApplyAttackToEnemyPokemon:
 	ld a, [wPlayerMoveEffect]
 	cp OHKO_EFFECT
@@ -4664,8 +4746,23 @@ ApplyAttackToEnemyPokemon:
 	ld b, SONICBOOM_DAMAGE ; 20
 	cp SONICBOOM
 	jr z, .storeDamage
-; Dragon Rage
 	ld b, DRAGON_RAGE_DAMAGE ; 40
+	cp DRAGON_RAGE
+	jr z, .storeDamage
+; Psywave
+	ld a, [hl]
+	ld b, a
+	srl a
+	add b
+	ld b, a ; b = level * 1.5
+; loop until a random number in the range [1, b) is found
+.loop
+	call BattleRandom
+	and a
+	jr z, .loop
+	cp b
+	jr nc, .loop
+	ld b, a
 .storeDamage ; store damage value at b
 	ld hl, wDamage
 	xor a
@@ -4906,7 +5003,38 @@ HandleBuildingRage:
 	ld de, wPlayerMonStatMods
 	ld bc, wPlayerMoveNum
 .next
+	bit USING_RAGE, [hl] ; is the pokemon being attacked under the effect of Rage?
+	ret z ; return if not
+	ld a, [de]
+	cp $0d ; maximum stat modifier value
+	ret z ; return if attack modifier is already maxed
+	ldh a, [hWhoseTurn]
+	xor $01 ; flip turn for the stat modifier raising function
+	ldh [hWhoseTurn], a
+; temporarily change the target pokemon's move to $00 and the effect to the one
+; that causes the attack modifier to go up one stage
+	ld h, b
+	ld l, c
+	ld [hl], $00 ; null move number
+	inc hl
+	ld [hl], ATTACK_UP1_EFFECT
+	push hl
+	ld hl, BuildingRageText
+	call PrintText
+	call StatModifierUpEffect ; stat modifier raising function
+	pop hl
+	xor a
+	ldd [hl], a ; null move effect
+	ld a, DRAGON_RAGE ; placeholder, this logic should never be entered anyway since Rage is removed
+	ld [hl], a ; restore the target pokemon's move number to Rage
+	ldh a, [hWhoseTurn]
+	xor $01 ; flip turn back to the way it was
+	ldh [hWhoseTurn], a
 	ret
+
+BuildingRageText:
+	text_far _BuildingRageText
+	text_end
 
 ; copy last move for Mirror Move
 ; sets zero flag on failure and unsets zero flag on success
@@ -5191,8 +5319,8 @@ MoveHitTest:
 	ld bc, wBattleMonStatus
 .dreamEaterCheck
 	ld a, [de]
-	cp DREAM_EATER_EFFECT
-	jr nz, .swiftCheck
+	cp a ; short-circuiting behavior, Dream Eater was removed
+	jr z, .swiftCheck
 	ld a, [bc]
 	and SLP ; is the target pokemon sleeping?
 	jp z, .moveMissed
@@ -5206,8 +5334,8 @@ MoveHitTest:
 ; Since CheckTargetSubstitute overwrites a with either $00 or $01, it never works.
 	cp DRAIN_HP_EFFECT
 	jp z, .moveMissed
-	cp DREAM_EATER_EFFECT
-	jp z, .moveMissed
+	cp a ; Another short-circuit since Dream Eater was removed
+	jp nz, .moveMissed
 .checkForDigOrFlyStatus
 	bit INVULNERABLE, [hl]
 	jp nz, .moveMissed
@@ -5223,7 +5351,7 @@ MoveHitTest:
 	jr c, .enemyMistCheck
 	cp ATTACK_DOWN2_EFFECT
 	jr c, .skipEnemyMistCheck
-	cp REFLECT_EFFECT + 1
+	cp ATTACK_FOUR_EFFECT + 1
 	jr c, .enemyMistCheck
 	jr .skipEnemyMistCheck
 .enemyMistCheck
@@ -5249,7 +5377,7 @@ MoveHitTest:
 	jr c, .playerMistCheck
 	cp ATTACK_DOWN2_EFFECT
 	jr c, .skipPlayerMistCheck
-	cp REFLECT_EFFECT + 1
+	cp ATTACK_FOUR_EFFECT + 1
 	jr c, .playerMistCheck
 	jr .skipPlayerMistCheck
 .playerMistCheck
@@ -5480,6 +5608,7 @@ EnemyCalcMoveDamage:
 	call IsInArray
 	jp c, EnemyMoveHitTest
 	call CriticalHitTest
+	call HandleCounterMove
 	jr z, handleIfEnemyMoveMissed
 	call SwapPlayerAndEnemyLevels
 	call GetDamageVarsForEnemyAttack
@@ -5877,13 +6006,26 @@ CheckEnemyStatusConditions:
 	jp .enemyReturnToHL
 .checkIfUsingMultiturnMove
 	bit USING_TRAPPING_MOVE, [hl] ; is mon using multi-turn move?
-	jp z, .checkEnemyStatusConditionsDone ; if we made it this far, mon can move normally this turn
+	jp z, .checkIfUsingRage
 	ld hl, AttackContinuesText
 	call PrintText
 	ld hl, wEnemyNumAttacksLeft
 	dec [hl] ; did multi-turn move end?
 	ld hl, GetEnemyAnimationType ; if it didn't, skip damage calculation (deal damage equal to last hit),
 	                             ; DecrementPP and MoveHitTest
+	jp nz, .enemyReturnToHL
+	jp .enemyReturnToHL
+.checkIfUsingRage
+	ld a, [wEnemyBattleStatus2]
+	bit USING_RAGE, a ; is mon using rage?
+	jp z, .checkEnemyStatusConditionsDone ; if we made it this far, mon can move normally this turn
+	ld a, DRAGON_RAGE ; short-circuit, this behavior should never be entered since Rage is removed
+	ld [wd11e], a
+	call GetMoveName
+	call CopyToStringBuffer
+	xor a
+	ld [wEnemyMoveEffect], a
+	ld hl, EnemyCanExecuteMove
 	jp .enemyReturnToHL
 .enemyReturnToHL
 	xor a ; set Z flag

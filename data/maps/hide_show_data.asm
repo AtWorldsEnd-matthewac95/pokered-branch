@@ -108,7 +108,7 @@ MapHSPointers:
 	dw SSAnne1FRoomsHS
 	dw SSAnne2FRoomsHS
 	dw SSAnneB1FRoomsHS
-	dw NoHS
+	dw SeafoamIslandsB3FItemHS
 	dw NoHS
 	dw NoHS
 	dw VictoryRoad1FHS
@@ -209,7 +209,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw Route23HS
 	dw SilphCo2FHS
 	dw SilphCo3FHS
 	dw SilphCo4FHS
@@ -447,6 +447,8 @@ RocketHideoutB4FHS:
 	db ROCKET_HIDEOUT_B4F, $07, SHOW
 	db ROCKET_HIDEOUT_B4F, $08, HIDE
 	db ROCKET_HIDEOUT_B4F, $09, HIDE
+Route23HS:
+	db ROUTE_23, $08, SHOW
 SilphCo2FHS:
 	db SILPH_CO_2F, $01, SHOW
 	db SILPH_CO_2F, $02, SHOW
@@ -477,8 +479,6 @@ SilphCo6FHS:
 	db SILPH_CO_6F, $07, SHOW
 	db SILPH_CO_6F, $08, SHOW
 	db SILPH_CO_6F, $09, SHOW
-Route23HS:
-	db ROUTE_23, $08, SHOW
 SilphCo7FHS:
 	db SILPH_CO_7F, $05, SHOW
 	db SILPH_CO_7F, $06, SHOW

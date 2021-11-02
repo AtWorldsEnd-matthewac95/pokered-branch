@@ -2,7 +2,7 @@ PrintSmokescreenGuyText:
 	call EnableAutoTextBoxDrawing
 	tx_pre_jump SmokescreenGuyText
 
-SmokescreenGuyText:
+SmokescreenGuyText::
 	text_asm
 	CheckEvent EVENT_GOT_TM20
 	jr nz, .got_item

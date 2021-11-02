@@ -79,7 +79,7 @@
 	const ACCURACY_DOWN_SIDE_EFFECT  ; $48   DONE
 	const_skip                       ; $49
 	const_skip                       ; $4A
-	DEFENSE_DOWN2_SIDE_EFFECT        ; $4B   DONE
+	const DEFENSE_DOWN2_SIDE_EFFECT  ; $4B   DONE
 	const CONFUSION_SIDE_EFFECT      ; $4C
 	const TWINEEDLE_EFFECT           ; $4D
 	const_skip                       ; $4E
