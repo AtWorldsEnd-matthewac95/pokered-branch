@@ -27,11 +27,11 @@ BurnEffect_:
 	and a
 	jr nz, .didntAffect
 	set BRN, [hl]
-	callfar QuarterSpeedDueToParalysis
+	callfar HalveAttackDueToBurn
 	ld c, 30
 	call DelayFrames
 	callfar PlayCurrentMoveAnimation
-	jpfar PrintMayNotAttackText
+	jpfar BurnedText
 .didntAffect
 	ld c, 50
 	call DelayFrames

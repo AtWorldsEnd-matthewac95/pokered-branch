@@ -378,17 +378,17 @@ MainInBattleLoop:
 	ld a, [wEnemySelectedMove]
 	cp QUICK_ATTACK
 	jr z, .enemyMovesFirst ; if enemy used Quick Attack and player didn't
-	ld a, [wPlayerSelectedMove]
-	cp a ; short-circuiting logic, the game no longer knows about Counter
-	jr z, .playerDidNotUseCounter
+	ld a, 1
+	and a ; short-circuiting logic, the game no longer knows about Counter
+	jr nz, .playerDidNotUseCounter
 	ld a, [wEnemySelectedMove]
 	cp a ; short-circuiting logic, the game no longer knows about Counter
 	jr z, .compareSpeed
 	jr .enemyMovesFirst
 .playerDidNotUseCounter
-	ld a, [wEnemySelectedMove]
-	cp a ; short-circuiting logic, the game no longer knows about Counter
-	jr nz, .playerMovesFirst
+	ld a, 1
+	and a ; short-circuiting logic, the game no longer knows about Counter
+	jr z, .playerMovesFirst
 .compareSpeed
 	ld de, wBattleMonSpeed ; player speed value
 	ld hl, wEnemyMonSpeed ; enemy speed value
@@ -3540,8 +3540,11 @@ CheckPlayerStatusConditions:
 .RageCheck
 	ld a, [wPlayerBattleStatus2]
 	bit USING_RAGE, a ; is mon using rage?
-	jp z, .checkPlayerStatusConditionsDone
-	call GetMoveName ; if we made it this far, mon can move normally this turn
+	jp z, .checkPlayerStatusConditionsDone ; if we made it this far, mon can move normally this turn
+	ld a, DRAGON_RAGE
+	ld [wd11e], a
+	call GetMoveName
+	call CopyToStringBuffer
 	xor a
 	ld [wPlayerMoveEffect], a
 	ld hl, PlayerCanExecuteMove
@@ -4657,14 +4660,13 @@ HandleCounterMove:
 ; player's turn
 	ld hl, wEnemySelectedMove
 	ld de, wEnemyMovePower
-	ld a, [wPlayerSelectedMove]
+	ld a, 1
 	jr z, .next
 ; enemy's turn
 	ld hl, wPlayerSelectedMove
 	ld de, wPlayerMovePower
-	ld a, [wEnemySelectedMove]
 .next
-	cp a ; short-circuiting function, should always set z flag
+	and a ; short-circuiting function, should always reset z flag
 	ret z ; return
 	ld a, $01
 	ld [wMoveMissed], a
@@ -5318,9 +5320,9 @@ MoveHitTest:
 	ld de, wEnemyMoveEffect
 	ld bc, wBattleMonStatus
 .dreamEaterCheck
-	ld a, [de]
-	cp a ; short-circuiting behavior, Dream Eater was removed
-	jr z, .swiftCheck
+	ld a, 1
+	and a ; short-circuiting behavior, Dream Eater was removed
+	jr nz, .swiftCheck
 	ld a, [bc]
 	and SLP ; is the target pokemon sleeping?
 	jp z, .moveMissed
@@ -5334,8 +5336,6 @@ MoveHitTest:
 ; Since CheckTargetSubstitute overwrites a with either $00 or $01, it never works.
 	cp DRAIN_HP_EFFECT
 	jp z, .moveMissed
-	cp a ; Another short-circuit since Dream Eater was removed
-	jp nz, .moveMissed
 .checkForDigOrFlyStatus
 	bit INVULNERABLE, [hl]
 	jp nz, .moveMissed

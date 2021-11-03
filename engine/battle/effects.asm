@@ -1197,14 +1197,8 @@ ChargeMoveEffectText:
 	text_far _ChargeMoveEffectText
 	text_asm
 	ld a, [wChargeMoveNum]
-	cp a ; Razor Wind was removed
-	ld hl, MadeWhirlwindText
-	jr nz, .gotText
 	cp SOLARBEAM
 	ld hl, TookInSunlightText
-	jr z, .gotText
-	cp a ; Skull Bash was removed
-	ld hl, LoweredItsHeadText
 	jr nz, .gotText
 	cp SKY_ATTACK
 	ld hl, SkyAttackGlowingText
