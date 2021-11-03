@@ -13,7 +13,7 @@ MoveSoundTable:
 	db SFX_DAMAGE,             $00, $80 ; SCRATCH
 	db SFX_NOT_VERY_EFFECTIVE, $02, $ff ; SAND_RAKE
 	db SFX_BATTLE_19,          $10, $20 ; FLAME_WHEEL
-	db SFX_BATTLE_31,          $80, $04 ; ROCK_TACKLE
+	db SFX_BATTLE_31,          $20, $04 ; ROCK_TACKLE
 	db SFX_NOT_VERY_EFFECTIVE, $10, $c0 ; SWORDS_DANCE
 	db SFX_NOT_VERY_EFFECTIVE, $00, $a0 ; CUT
 	db SFX_BATTLE_12,          $00, $c0 ; GUST
@@ -27,7 +27,7 @@ MoveSoundTable:
 	db SFX_BATTLE_17,          $f0, $40 ; DOUBLE_KICK
 	db SFX_SUPER_EFFECTIVE,    $00, $80 ; MEGA_KICK
 	db SFX_BATTLE_17,          $00, $80 ; JUMP_KICK
-	db SFX_BATTLE_27,          $30, $80 ; SHADOW_BALL
+	db SFX_BATTLE_27,          $10, $80 ; SHADOW_BALL
 	db SFX_BATTLE_1B,          $01, $a0 ; SAND_ATTACK
 	db SFX_BATTLE_0F,          $00, $80 ; X_SCISSOR
 	db SFX_BATTLE_1E,          $00, $60 ; HORN_ATTACK

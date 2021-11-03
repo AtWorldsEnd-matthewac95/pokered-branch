@@ -713,7 +713,7 @@ UpdateLoweredStatDone:
 	ld hl, MonsStatsFellText
 	call PrintText
 
-; These where probably added given that a stat-down move affecting speed or attack will override
+; These were probably added given that a stat-down move affecting speed or attack will override
 ; the stat penalties from paralysis and burn respectively.
 ; But they are always called regardless of the stat affected by the stat-down move.
 	call QuarterSpeedDueToParalysis
@@ -789,7 +789,7 @@ AllStatsDownEffect:
 	ld bc, wPlayerBattleStatus1
 .allStatModifierDownEffect
 	call CheckTargetSubstitute ; can't hit through substitute
-	jp nz, MoveMissed
+	jp nz, PrintButItFailedText_
 	push hl
 	push de
 	push bc
@@ -799,13 +799,13 @@ AllStatsDownEffect:
 	pop hl
 	ld a, [wMoveMissed]
 	and a
-	jp nz, MoveMissed
+	jp nz, PrintButItFailedText_
 	ld a, [bc]
 	bit INVULNERABLE, a ; fly/dig
-	jp nz, MoveMissed
+	jp nz, PrintButItFailedText_
 .allStatsDownPreLoop
-	ld d, $0
-	ld e, $0
+	ld bc, $0 ; hardcode 0 for now since we want to decrease attack first
+	ld de, $0
 	push de
 	jr .allStatsDownLoop
 .allStatsDownLoopSuccess
@@ -822,9 +822,9 @@ AllStatsDownEffect:
 	cp $4 ; once we reach ACCURACY (4), we don't lower any more stats
 	jr z, .allStatsDownLoopDone
 	push de
-.allStatsDownLoop
 	ld c, $1 ; hardcode a 1 since we'll iterate through all relevant stats
 	ld b, $0
+.allStatsDownLoop
 	add hl, bc
 	ld b, [hl]
 	dec b ; dec corresponding stat mod
@@ -900,13 +900,20 @@ AllStatsDownEffect:
 	jr .allStatsDownLoopSuccess
 .allStatsDownLoopDone
 	ld a, d
+	and a
 	jr z, .allStatsDownNothingHappened
+	call PlayCurrentMoveAnimation2
 	ldh a, [hWhoseTurn]
 	and a
 	call nz, ApplyBadgeStatBoosts ; whenever the player uses a stat-down move, badge boosts get reapplied again to every stat,
 	                              ; even to those not affected by the stat-up move (will be boosted further)
 	ld hl, AllMonsStatsFellText
 	call PrintText
+; These were probably added given that a stat-down move affecting speed or attack will override
+; the stat penalties from paralysis and burn respectively.
+; But they are always called regardless of the stat affected by the stat-down move.
+	call QuarterSpeedDueToParalysis
+	jp HalveAttackDueToBurn
 .allStatsDownNothingHappened
 	ld hl, NothingHappenedText
 	jp PrintText

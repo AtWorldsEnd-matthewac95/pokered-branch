@@ -4667,7 +4667,7 @@ HandleCounterMove:
 	ld de, wPlayerMovePower
 .next
 	and a ; short-circuiting function, should always reset z flag
-	ret z ; return
+	ret
 	ld a, $01
 	ld [wMoveMissed], a
 	ld a, [hl]

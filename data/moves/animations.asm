@@ -320,7 +320,7 @@ WingAttackAnim:
 NaturalForceAnim:
 	battle_anim LEECH_SEED, SE_DARK_SCREEN_PALETTE
 	battle_anim NO_MOVE, SE_LEAVES_FALLING
-	battle_anim HYPER_BEAM, SUBANIM_44, 1, 1
+	battle_anim NATURALFORCE, SUBANIM_44, 1, 1
 	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
 	battle_anim NATURALFORCE, SUBANIM_2B, 1, 6
 	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH

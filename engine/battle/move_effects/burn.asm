@@ -31,7 +31,8 @@ BurnEffect_:
 	ld c, 30
 	call DelayFrames
 	callfar PlayCurrentMoveAnimation
-	jpfar BurnedText
+	ld hl, __BurnedText
+	jp PrintText
 .didntAffect
 	ld c, 50
 	call DelayFrames
@@ -40,3 +41,7 @@ BurnEffect_:
 	ld c, 50
 	call DelayFrames
 	jpfar PrintDoesntAffectText
+
+__BurnedText:
+	text_far _BurnedText
+	text_end
